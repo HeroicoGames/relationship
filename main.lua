@@ -1,16 +1,14 @@
-require 'src/figures'
+local figures = require 'src/figures'
 
 
 function love.load ()
-    determineInitialCoordinates ()
+    figures.load ()
 end
 
 function love.update ()
-    drawAnimateSquare()
+    figures.update()
 end
 
 function love.draw ()
-    love.graphics.line (squareTable)
-    -- TODO: center text
-    love.graphics.print ('ONE PERSON', xMiddlePoint, yMiddlePoint, 0, 2, 2)
+    figures.draw()
 end

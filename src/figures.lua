@@ -1,17 +1,35 @@
 ONE_PERSON_TEXT = 'One Person'
 
+local dynamicX2 = 0
+local dynamicY3 = 0
+local dynamicX4 = 0
+local dynamicY1 = 0
 
-function determineInitialCoordinates ()
-    sideSize = 300
+local x1 = 1
+local y1 = 0
+local x2 = 0
+local y2 = 0
+local x3 = 0
+local y3 = 0
+local x4 = 0
+local y4 = 0
+
+local increaseSize = 0
+
+local figures = {}
+
+
+function figures.determineInitialCoordinates ()
+    local sideSize = 300
     increaseSize = 5
     squareTable = {}
 
     -- Get center of game screen
-    xMiddlePoint = love.graphics.getWidth() / 2
-    yMiddlePoint = love.graphics.getHeight() / 2
+    local xMiddlePoint = love.graphics.getWidth() / 2
+    local yMiddlePoint = love.graphics.getHeight() / 2
 
     -- Distance from center
-    units = (sideSize / 2)
+    local units = (sideSize / 2)
 
     -- Calculate edges
     x1 = xMiddlePoint - units
@@ -34,7 +52,7 @@ function determineInitialCoordinates ()
 end
 
 
-function drawAnimateSquare ()
+function figures.drawAnimateSquare ()
     if dynamicX2 < x2 then
         dynamicX2 = dynamicX2 + increaseSize
         squareTable = {
@@ -70,3 +88,19 @@ function drawAnimateSquare ()
         }
     end
 end
+
+function figures.load()
+    figures.determineInitialCoordinates ()
+end
+
+function figures.update()
+    figures.drawAnimateSquare()
+end
+
+function figures.draw()
+    love.graphics.line (squareTable)
+    -- TODO: center text
+    love.graphics.print ('ONE PERSON', xMiddlePoint, yMiddlePoint, 0, 2, 2)
+end
+
+return figures
