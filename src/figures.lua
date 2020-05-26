@@ -102,8 +102,8 @@ end
 
 function figures.draw()
     love.graphics.line (squareTable)
-    -- TODO: center text
-    love.graphics.print ('ONE PERSON', xMiddlePoint, yMiddlePoint, 0, 2, 2)
+    -- Only work with one rectangle center in window, for now
+    love.graphics.printf ('ONE PERSON', 0, yMiddlePoint, love.graphics.getWidth(), 'center')
 end
 
 return figures
