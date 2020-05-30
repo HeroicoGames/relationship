@@ -16,9 +16,6 @@ local y4 = 0
 
 local increaseSize = 0
 
-local xMiddlePoint = 0
-local yMiddlePoint = 0
-
 local figures = {}
 
 
