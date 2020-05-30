@@ -14,6 +14,7 @@ local y3 = 0
 local x4 = 0
 local y4 = 0
 
+local sideSize = 0
 local increaseSize = 0
 
 local xMiddlePoint = 0
@@ -23,7 +24,7 @@ local figures = {}
 
 
 function figures.determineInitialCoordinates ()
-    local sideSize = 300
+    sideSize = 300
     increaseSize = 5
     squareTable = {}
 
@@ -35,14 +36,14 @@ function figures.determineInitialCoordinates ()
     local units = (sideSize / 2)
 
     -- Calculate edges
-    x1 = xMiddlePoint - units
-    y1 = yMiddlePoint - units
+    x1 = 20
+    y1 = 100
 
-    x2 = xMiddlePoint + units
+    x2 = 220
     y2 = y1
 
     x3 = x2
-    y3 = yMiddlePoint + units
+    y3 = 300
 
     x4 = x1
     y4 = y3
@@ -103,7 +104,7 @@ end
 function figures.draw()
     love.graphics.line (squareTable)
     -- Only work with one rectangle center in window, for now
-    love.graphics.printf ('ONE PERSON', 0, yMiddlePoint, love.graphics.getWidth(), 'center')
+    love.graphics.printf ('ONE PERSON', x1, y3 - y1, x2 - x1, 'center')
 end
 
 return figures
