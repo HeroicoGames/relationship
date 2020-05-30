@@ -1,14 +1,14 @@
-local figures = require 'src/figures'
+local square = require 'src/figures/square'
 
 
 function love.load ()
-    figures.load (400, 340, 200, 'square')
+    square.load (400, 340, 200)
 end
 
 function love.update ()
-    figures.update()
+    square.update()
 end
 
 function love.draw ()
-    figures.draw()
+    square.draw()
 end
