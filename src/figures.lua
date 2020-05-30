@@ -5,7 +5,7 @@ local dynamicY3 = 0
 local dynamicX4 = 0
 local dynamicY1 = 0
 
-local x1 = 1
+local x1 = 0
 local y1 = 0
 local x2 = 0
 local y2 = 0
@@ -23,27 +23,24 @@ local yMiddlePoint = 0
 local figures = {}
 
 
-function figures.determineInitialCoordinates ()
-    sideSize = 300
+function figures.initialCoordinates (initial_x, initial_y, sideSize)
+    sideSize = sideSize
     increaseSize = 5
     squareTable = {}
 
     -- Get center of game screen
-    xMiddlePoint = love.graphics.getWidth() / 2
-    yMiddlePoint = love.graphics.getHeight() / 2
-
-    -- Distance from center
-    local units = (sideSize / 2)
+    -- xMiddlePoint = love.graphics.getWidth() / 2
+    -- yMiddlePoint = love.graphics.getHeight() / 2
 
     -- Calculate edges
-    x1 = 20
-    y1 = 100
+    x1 = initial_x
+    y1 = initial_y
 
-    x2 = 220
+    x2 = x1 + sideSize
     y2 = y1
 
     x3 = x2
-    y3 = 300
+    y3 = y1 + sideSize
 
     x4 = x1
     y4 = y3
@@ -93,8 +90,8 @@ function figures.drawAnimateSquare ()
     end
 end
 
-function figures.load()
-    figures.determineInitialCoordinates ()
+function figures.load(x1, y1, sideSize)
+    figures.initialCoordinates (x1, y1, sideSize)
 end
 
 function figures.update()
@@ -104,7 +101,7 @@ end
 function figures.draw()
     love.graphics.line (squareTable)
     -- Only work with one rectangle center in window, for now
-    love.graphics.printf ('ONE PERSON', x1, y3 - y1, x2 - x1, 'center')
+    love.graphics.printf ('ONE PERSON', x1, ((y3 - y1) / 2) + y1, x2 - x1, 'center')
 end
 
 return figures
