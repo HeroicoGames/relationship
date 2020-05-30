@@ -14,7 +14,6 @@ local y3 = 0
 local x4 = 0
 local y4 = 0
 
-local sideSize = 0
 local increaseSize = 0
 
 local xMiddlePoint = 0
@@ -23,18 +22,14 @@ local yMiddlePoint = 0
 local figures = {}
 
 
-function figures.initialCoordinates (initial_x, initial_y, sideSize)
+function figures.initialCoordinatesSquare (initialX, initialY, sideSize)
     sideSize = sideSize
     increaseSize = 5
     squareTable = {}
 
-    -- Get center of game screen
-    -- xMiddlePoint = love.graphics.getWidth() / 2
-    -- yMiddlePoint = love.graphics.getHeight() / 2
-
     -- Calculate edges
-    x1 = initial_x
-    y1 = initial_y
+    x1 = initialX
+    y1 = initialY
 
     x2 = x1 + sideSize
     y2 = y1
@@ -90,8 +85,10 @@ function figures.drawAnimateSquare ()
     end
 end
 
-function figures.load(x1, y1, sideSize)
-    figures.initialCoordinates (x1, y1, sideSize)
+function figures.load(initialX, initialY, sideSize, figureType)
+    if figureType == 'square' then
+        figures.initialCoordinatesSquare (initialX, initialY, sideSize)
+    end
 end
 
 function figures.update()

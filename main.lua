@@ -2,7 +2,7 @@ local figures = require 'src/figures'
 
 
 function love.load ()
-    figures.load (400, 340, 200)
+    figures.load (400, 340, 200, 'square')
 end
 
 function love.update ()
