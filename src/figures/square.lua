@@ -3,7 +3,7 @@ local square = {}
 ONE_PERSON_TEXT = 'One Person'
 local squareTable = {}
 
-local increaseSize = 5
+local sideIncrement = 5
 local xTopLeftPosition = 0
 local xTopRightPosition = 0
 local xBottomRightPosition = 0
@@ -53,7 +53,7 @@ end
 
 function square.updateTopSideSize ()
     if dynamicXTopRightPosition < xTopRightPosition then
-        dynamicXTopRightPosition = dynamicXTopRightPosition + increaseSize
+        dynamicXTopRightPosition = dynamicXTopRightPosition + sideIncrement
         
         squareTable = {
             xTopLeftPosition, yTopLeftPosition,
@@ -67,7 +67,7 @@ end
 
 function square.updateRightSideSize ()
     if dynamicYBottomRightPosition < yBottomRightPosition then
-        dynamicYBottomRightPosition = dynamicYBottomRightPosition + increaseSize
+        dynamicYBottomRightPosition = dynamicYBottomRightPosition + sideIncrement
         
         squareTable = {
             xTopLeftPosition, yTopLeftPosition,
@@ -82,7 +82,7 @@ end
 
 function square.updateBottomSideSize ()
     if dynamicXBottomLeftPosition > xBottomLeftPosition then
-        dynamicXBottomLeftPosition = dynamicXBottomLeftPosition - increaseSize
+        dynamicXBottomLeftPosition = dynamicXBottomLeftPosition - sideIncrement
         
         squareTable = {
             xTopLeftPosition, yTopLeftPosition,
@@ -98,7 +98,7 @@ end
 
 function square.updateLeftSideSize ()
     if dynamicYTopLeftPosition > yTopLeftPosition then
-        dynamicYTopLeftPosition = dynamicYTopLeftPosition - increaseSize
+        dynamicYTopLeftPosition = dynamicYTopLeftPosition - sideIncrement
         
         squareTable = {
             xTopLeftPosition, yTopLeftPosition,
