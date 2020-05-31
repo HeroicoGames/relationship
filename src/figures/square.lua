@@ -18,6 +18,7 @@ local dynamicXBottomLeftPosition = 0
 local dynamicYBottomRightPosition = 0
 local dynamicYTopLeftPosition = 0
 
+local currentSize
 
 function square.setInitialValues (initialXPosition, initialYPosition, sideSize)
     xTopLeftPosition = initialXPosition
@@ -37,6 +38,8 @@ function square.setInitialValues (initialXPosition, initialYPosition, sideSize)
     dynamicYBottomRightPosition = yTopRightPosition
     dynamicXBottomLeftPosition = xBottomRightPosition
     dynamicYTopLeftPosition = yBottomLeftPosition
+    -- side global
+    currentSize = sideSize
 end
 
 function square.updateSidesSize ()
@@ -112,8 +115,20 @@ function square.updateLeftSideSize ()
     end
 end
 
+function square.drawBehavior(x, y , size )
+    squareTable = {
+        x, y,
+        x + size, y,
+        x + size, y + size,
+        x, y + size,
+        x, y,
+    }
+    love.graphics.line (squareTable)
+end
 
-function square.load(initialXPosition, initialYPosition, sidesSize)
+
+function square.load(initialXPosition, initialYPosition, sidesSize, fnBehavior)
+    square.drawBehavior = fnBehavior or square.drawBehavior
     square.setInitialValues (initialXPosition, initialYPosition, sidesSize)
 end
 
@@ -122,9 +137,15 @@ function square.update()
     square.updateSidesSize ()
 end
 
+function square.test(args)
+    if type(args) ~= 'string' then
+    return
+    end
+end
+
 
 function square.draw()
-    love.graphics.line (squareTable)
+    square.drawBehavior(xTopLeftPosition, yTopLeftPosition, currentSize)
     -- TODO: move to own module
     love.graphics.printf (
         ONE_PERSON_TEXT,
