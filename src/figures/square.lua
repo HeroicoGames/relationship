@@ -115,7 +115,8 @@ function square.updateLeftSideSize ()
     end
 end
 
-function square.drawBehavior(x, y , size )
+
+function square.drawBehavior (x, y, size)
     squareTable = {
         x, y,
         x + size, y,
@@ -127,8 +128,8 @@ function square.drawBehavior(x, y , size )
 end
 
 
-function square.load(initialXPosition, initialYPosition, sidesSize, fnBehavior)
-    square.drawBehavior = fnBehavior or square.drawBehavior
+function square.load(initialXPosition, initialYPosition, sidesSize, functionDrawBehavior)
+    square.drawBehavior = functionDrawBehavior or square.drawBehavior
     square.setInitialValues (initialXPosition, initialYPosition, sidesSize)
 end
 
@@ -137,9 +138,10 @@ function square.update()
     square.updateSidesSize ()
 end
 
+
 function square.test(args)
     if type(args) ~= 'string' then
-    return
+        return
     end
 end
 
