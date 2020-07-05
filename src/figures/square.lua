@@ -54,7 +54,7 @@ end
 function square.updateTopSideSize ()
     if dynamicXTopRightPosition < xTopRightPosition then
         dynamicXTopRightPosition = dynamicXTopRightPosition + sideIncrement
-        
+
         squareTable = {
             xTopLeftPosition, yTopLeftPosition,
             dynamicXTopRightPosition, yTopRightPosition,
@@ -68,7 +68,7 @@ end
 function square.updateRightSideSize ()
     if dynamicYBottomRightPosition < yBottomRightPosition then
         dynamicYBottomRightPosition = dynamicYBottomRightPosition + sideIncrement
-        
+
         squareTable = {
             xTopLeftPosition, yTopLeftPosition,
             dynamicXTopRightPosition, yTopRightPosition,
@@ -83,7 +83,7 @@ end
 function square.updateBottomSideSize ()
     if dynamicXBottomLeftPosition > xBottomLeftPosition then
         dynamicXBottomLeftPosition = dynamicXBottomLeftPosition - sideIncrement
-        
+
         squareTable = {
             xTopLeftPosition, yTopLeftPosition,
             dynamicXTopRightPosition, yTopRightPosition,
