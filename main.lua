@@ -3,19 +3,19 @@ local animation = require 'src/figures/animation'
 local background = require 'src/background'
 
 local deltaTotal = 0
--- local sceneName = 'one_person'
 local SCENE_MESSAGE = 'One Person'
+local squareSideSize = 100
 
 
 function love.load ()
     background.load ()
-    one_person_square = square.create (200, 150, 200)
+    one_person_square = square.create (200, 150, squareSideSize)
 
-    two_people_he = square.create (400, 340, 200)   
-    two_people_she = square.create (420, 390, 200)   
+    two_people_he = square.create (400, 340, squareSideSize)
+    two_people_she = square.create (420 + squareSideSize, 360, squareSideSize)
 
-    relationship_he = square.create (500, 240, 200)   
-    relationship_she = square.create (500, 240, 200)
+    relationship_he = square.create (310, 190, squareSideSize)
+    relationship_she = square.create (311 + squareSideSize, 190, squareSideSize)
 end
 
 
@@ -25,12 +25,15 @@ function love.update (deltaTime)
     if (deltaTotal < 5 and sceneName ~= 'one_person') then
         sceneName = 'one_person'
 
-    elseif (deltaTotal > 5 and deltaTotal < 10 and sceneName ~= 'two_people') then
-        sceneName = 'two_people'
+    elseif (deltaTotal > 5 and deltaTotal < 10 and sceneName ~= 'first_part_two_people') then
+        sceneName = 'first_part_two_people'
 
         SCENE_MESSAGE = 'Two people'
 
-    elseif (deltaTotal > 10 and deltaTotal < 15 and sceneName ~= 'relationship') then
+    elseif (deltaTotal > 10 and deltaTotal < 15 and sceneName ~= 'second_part_two_people') then
+        sceneName = 'second_part_two_people'
+
+    elseif (deltaTotal > 15 and deltaTotal < 20 and sceneName ~= 'relationship') then
         sceneName = 'relationship'
 
         SCENE_MESSAGE = 'Relationship'
@@ -40,8 +43,10 @@ function love.update (deltaTime)
     if sceneName == 'one_person' then
         animation.update(one_person_square)
 
-    elseif sceneName == 'two_people' then
+    elseif sceneName == 'first_part_two_people' then
         animation.update(two_people_he)
+
+    elseif sceneName == 'second_part_two_people' then
         animation.update(two_people_she)
 
     elseif sceneName == 'relationship' then
@@ -58,7 +63,10 @@ function love.draw ()
     if sceneName == 'one_person' then
         animation.draw (one_person_square)
 
-    elseif sceneName == 'two_people' then
+    elseif sceneName == 'first_part_two_people' then
+        animation.draw (two_people_he)
+
+    elseif sceneName == 'second_part_two_people' then
         animation.draw (two_people_he)
         animation.draw (two_people_she)
 
@@ -69,6 +77,6 @@ function love.draw ()
     end
 
     -- TODO: center in X (screen size)
-    love.graphics.print (SCENE_MESSAGE, 500, 0)
+    love.graphics.print (SCENE_MESSAGE, love.graphics.getWidth () / 2, 0)
 end
 
