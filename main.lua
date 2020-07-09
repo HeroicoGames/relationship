@@ -18,6 +18,7 @@ function love.load ()
     relationship_she = square.create (500, 240, 200)
 end
 
+
 function love.update (deltaTime)
     deltaTotal = deltaTotal + deltaTime
 
@@ -26,12 +27,12 @@ function love.update (deltaTime)
 
     elseif (deltaTotal > 5 and deltaTotal < 10 and sceneName ~= 'two_people') then
         sceneName = 'two_people'
-        
+
         SCENE_MESSAGE = 'Two people'
 
     elseif (deltaTotal > 10 and deltaTotal < 15 and sceneName ~= 'relationship') then
         sceneName = 'relationship'
-        
+
         SCENE_MESSAGE = 'Relationship'
 
     end
@@ -48,9 +49,8 @@ function love.update (deltaTime)
         animation.update(relationship_she)
 
     end
-
-
 end
+
 
 function love.draw ()
     background.draw ()
@@ -70,6 +70,5 @@ function love.draw ()
 
     -- TODO: center in X (screen size)
     love.graphics.print (SCENE_MESSAGE, 500, 0)
-
 end
 

@@ -26,5 +26,4 @@ function square.create (initialXPosition, initialYPosition, sideSize)
 end
 
 
-
 return square
