@@ -76,7 +76,6 @@ function love.draw ()
 
     end
 
-    -- TODO: center in X (screen size)
-    love.graphics.print (SCENE_MESSAGE, love.graphics.getWidth () / 2, 0)
+    love.graphics.printf (SCENE_MESSAGE, 0, 100, love.graphics.getWidth (), 'center')
 end
 
