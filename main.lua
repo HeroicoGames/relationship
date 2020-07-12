@@ -5,6 +5,7 @@ local background = require 'src/background'
 local deltaTotal = 0
 local SCENE_MESSAGE = 'ONE PERSON'
 local squareSideSize = 100
+local gameEnd = false
 
 
 function love.load ()
@@ -41,6 +42,9 @@ function love.update (deltaTime)
 
         SCENE_MESSAGE = 'RELATIONSHIP'
 
+    elseif (deltaTotal > 20 and gameEnd ~= true) then
+        gameEnd = true
+
     end
 
     if sceneName == 'one_person' then
@@ -55,7 +59,6 @@ function love.update (deltaTime)
     elseif sceneName == 'relationship' then
         animation.update(relationship_he)
         animation.update(relationship_she)
-
     end
 end
 
@@ -76,6 +79,16 @@ function love.draw ()
     elseif sceneName == 'relationship' then
         animation.draw(relationship_he)
         animation.draw(relationship_she)
+
+        -- TODO: center heart
+        -- Reference: https://twitter.com/obey_love/status/831484678066561024?lang=en
+        if gameEnd == true then
+            for index = 1, 2 do
+                love.graphics.circle('fill', 36 * index, 40, 22)
+            end
+
+            love.graphics.polygon('fill', 18, 53, 90, 53, 54, 96)
+        end
 
     end
 
