@@ -3,7 +3,7 @@ local animation = require 'src/figures/animation'
 local background = require 'src/background'
 
 local deltaTotal = 0
-local SCENE_MESSAGE = 'One Person'
+local SCENE_MESSAGE = 'ONE PERSON'
 local squareSideSize = 100
 
 
@@ -28,7 +28,7 @@ function love.update (deltaTime)
     elseif (deltaTotal > 5 and deltaTotal < 10 and sceneName ~= 'first_part_two_people') then
         sceneName = 'first_part_two_people'
 
-        SCENE_MESSAGE = 'Two people'
+        SCENE_MESSAGE = 'TWO PEOPLE'
 
     elseif (deltaTotal > 10 and deltaTotal < 15 and sceneName ~= 'second_part_two_people') then
         sceneName = 'second_part_two_people'
@@ -36,7 +36,7 @@ function love.update (deltaTime)
     elseif (deltaTotal > 15 and deltaTotal < 20 and sceneName ~= 'relationship') then
         sceneName = 'relationship'
 
-        SCENE_MESSAGE = 'Relationship'
+        SCENE_MESSAGE = 'RELATIONSHIP'
 
     end
 
@@ -76,6 +76,5 @@ function love.draw ()
 
     end
 
-    love.graphics.printf (SCENE_MESSAGE, 0, 100, love.graphics.getWidth (), 'center')
+    love.graphics.printf (SCENE_MESSAGE, 0, 20, love.graphics.getWidth (), 'center')
 end
-
