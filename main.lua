@@ -8,6 +8,9 @@ local squareSideSize = 100
 
 
 function love.load ()
+    backgroundMusic = love.audio.newSource ('sounds/relationship.ogg', 'static')
+    backgroundMusic:play ()
+
     background.load ()
     one_person_square = square.create (200, 150, squareSideSize)
 
