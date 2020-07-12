@@ -1,13 +1,6 @@
 local animation = {}
 
 local sideIncrement = 5
--- local square = {}
-
-
--- function animation.setSquare (squarex)
--- 	print(square.xTopRightPosition)
--- 	square = squarex
--- end
 
 
 function animation.updateSidesSize (square)
