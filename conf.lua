@@ -4,4 +4,5 @@ function love.conf (configuration)
     configuration.title = 'Relationship'
     configuration.window.resizable = true
 --    configuration.window.fullscreen = true
+    configuration.version = "11.3"
 end
